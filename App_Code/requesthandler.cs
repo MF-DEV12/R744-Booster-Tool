@@ -125,7 +125,7 @@ public class requesthandler : System.Web.Services.WebService {
 
     [WebMethod]
     [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-    public ResponseObject CheckMacAddress(string lastname, string firstname, string email)
+    public ResponseObject CheckMacAddress(string lastname, string firstname, string email, string macaddress)
     {
         ResponseObject result = new ResponseObject();
         try
@@ -147,7 +147,7 @@ public class requesthandler : System.Web.Services.WebService {
             else {
                 u.FirstName = firstname;
                 u.LastName = lastname;
-                u.MacAddress = Utility.GetMACAddress();
+                u.MacAddress = macaddress; //Utility.GetMACAddress();
                 if (dao.InsertUsers(u))
                     result.ResponseItem = "Successfully added.";
                 else
